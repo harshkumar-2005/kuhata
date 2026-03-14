@@ -41,7 +41,7 @@ const Contact = () => (
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg text-white font-semibold text-lg hover:scale-105 transition-transform"
+          className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-600 to-purple-600 rounded-full shadow-lg text-white font-semibold text-lg hover:scale-105 transition-transform"
         >
           {logo}
           {label}

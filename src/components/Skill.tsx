@@ -4,7 +4,7 @@ import Card from "./Card";
 const Skills = () => {
   const categories = [
     { title: "Frontend", items: ["React", "Tailwind", "HTML5", "CSS3", "JavaScript"] },
-    { title: "Backend", items: ["Node.js", "Express", "MongoDB", "MySQL", "Prisma"] },
+    { title: "Backend", items: ["Node.js", "Express", "MongoDB", "Prisma"] },
     { title: "DevOps", items: ["Docker", "AWS", "Nginx", "CI/CD", "Linux"] },
     { title: "Tools", items: ["Git", "Postman", "VS Code"] },
   ];
