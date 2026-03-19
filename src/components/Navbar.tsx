@@ -1,7 +1,3 @@
-import { useState } from "react";
-
-
-
 const Navbar = () => (
   <nav className="navbar">
     <div className="logo">H<span className="accent">Tech</span></div>
