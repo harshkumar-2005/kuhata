@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# 🌐 Deployment & Hosting
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Live URL
 
-Currently, two official plugins are available:
+* https://kuhata.dev
+* https://www.kuhata.dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🧱 Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+User → CloudFront (CDN + HTTPS)
+     → Amazon S3 (Static Hosting)
+     → React (Vite Build)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Tech Stack (Frontend + Hosting)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* React (Vite)
+* Tailwind CSS
+* AWS S3 (static file storage)
+* AWS CloudFront (CDN & caching)
+* AWS Certificate Manager (SSL/TLS)
+* Custom Domain (DNS via Name.com)
+
+---
+
+## 🔐 Key Features
+
+* HTTPS enabled using AWS ACM
+* Global CDN delivery via CloudFront
+* Optimized static asset caching
+* SPA routing handled using custom error responses
+* Custom domain integration (`kuhata.dev`)
+
+---
+
+## 📦 Deployment Process
+
+### 1. Build
+
+```bash
+npm run build
 ```
+
+### 2. Upload
+
+* Upload `dist/` contents to S3 bucket
+
+### 3. CDN Setup
+
+* CloudFront distribution connected to S3
+* Origin Access Control (OAC) enabled
+
+### 4. Routing Fix
+
+* 403/404 → `/index.html` (SPA support)
+
+### 5. Domain + SSL
+
+* Domain mapped via DNS (Name.com)
+* SSL certificate via AWS ACM
+
+---
+
+## 🌍 Hosting Details
+
+| Component | Service        |
+| --------- | -------------- |
+| Storage   | AWS S3         |
+| CDN       | AWS CloudFront |
+| SSL       | AWS ACM        |
+| Domain    | Name.com       |
+
+---
+
+## 🧠 Learnings
+
+* Configured CDN-based frontend deployment
+* Implemented secure HTTPS using ACM
+* Understood DNS mapping and domain routing
+* Optimized frontend delivery using caching
+
+---
+
+## ⚡ TL;DR
+
+* Hosted on AWS S3
+* Served via CloudFront CDN
+* Secured with HTTPS (ACM)
+* Domain: kuhata.dev
+
+---
